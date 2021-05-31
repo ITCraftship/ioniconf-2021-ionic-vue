@@ -1,0 +1,7 @@
+{
+  "name": "ic2021-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

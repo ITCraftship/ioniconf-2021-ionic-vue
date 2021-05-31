@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ic2021-vue",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

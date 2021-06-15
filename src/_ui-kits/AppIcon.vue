@@ -9,6 +9,8 @@ const icons = {
   'day-shift-grey': require('../assets/icons/day-shift-grey.svg'),
   'per-diem-grey': require('../assets/icons/per-diem-grey.svg'),
   'date-grey': require('../assets/icons/date-grey.svg'),
+  'share-purple': require('../assets/icons/share-purple.svg'),
+  'send-purple': require('../assets/icons/send-purple.svg'),
 }
 
 export default {

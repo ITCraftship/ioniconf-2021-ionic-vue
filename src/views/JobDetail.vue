@@ -102,7 +102,10 @@
 
         <ion-row>
           <ion-col>
-            <ion-card class="primary-layout">
+            <ion-card class="primary-layout job-shifts">
+              <ion-card-header class="ion-text-center">
+                <ion-card-title>Shifts in this job</ion-card-title>
+              </ion-card-header>
               <ion-card-content>job shifts card</ion-card-content>
             </ion-card>
           </ion-col>
@@ -112,14 +115,35 @@
           <ion-card-content>job qualification card</ion-card-content>
       </ion-card>
     </ion-content>
+
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-button fill="clear" expand="full">
+            <span>
+              <app-icon name="share-purple" size="medium" />
+            <span>ShiftShare<sup>TM</sup></span>
+            </span>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-button fill="clear" expand="full">
+            <span>
+              <app-icon name="send-purple" size="medium" />
+              <span>Request Job</span>
+            </span>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonFooter } from '@ionic/vue';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import JobDetailItem from '../_ui-kits/JobDetailItem.vue';
+import {AppIcon, JobDetailItem} from "@/_ui-kits";
 
 export default defineComponent({
   name: 'JobDetail',
@@ -127,6 +151,7 @@ export default defineComponent({
     IonContent,
     IonHeader,
     IonPage,
+    IonFooter,
     IonTitle,
     IonLabel,
     IonToolbar,
@@ -139,7 +164,9 @@ export default defineComponent({
     IonRow,
     IonCol,
     IonBadge,
+    IonButton,
     JobDetailItem,
+    AppIcon,
   }
 });
 </script>
@@ -199,6 +226,35 @@ export default defineComponent({
           }
         }
       }
+    }
+  }
+}
+
+ion-footer {
+  background: #ddf5ff;
+  ion-col:not(:last-child):after {
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 2px;
+    border-right: 1px solid var(--app-color-purple);
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-1px);
+  }
+
+  ion-button {
+    height: 70px;
+    text-transform: none;
+    font-weight: normal;
+    letter-spacing: 1.2px;
+
+    > span > ion-icon {
+      margin-bottom: 5px;
+    }
+    span {
+      display: block;
+      width: 100%;
     }
   }
 }

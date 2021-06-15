@@ -28,12 +28,12 @@
                       <ion-label>Jun 15, 2021</ion-label>
                     </ion-col>
                     <ion-col size="4">
-                      <ion-label>Shift Date</ion-label>
-                      <ion-label>Jun 15, 2021</ion-label>
+                      <ion-label>Shift Time</ion-label>
+                      <ion-label>06:00 - 14:00</ion-label>
                     </ion-col>
                     <ion-col size="4">
-                      <ion-label>Shift Date</ion-label>
-                      <ion-label>Jun 15, 2021</ion-label>
+                      <ion-label>License Type</ion-label>
+                      <ion-label><ion-badge>CNA</ion-badge></ion-label>
                     </ion-col>
                   </ion-row>
                 </ion-grid>
@@ -63,8 +63,39 @@
 
         <ion-row>
           <ion-col>
-            <ion-card class="primary-layout">
-              <ion-card-content>job properties card</ion-card-content>
+            <ion-card class="primary-layout job-properties">
+              <ion-card-content>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>Speciality</ion-label>
+                    <ion-label><ion-badge color="warning">Long Term Care</ion-badge></ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>Type of Job</ion-label>
+                    <ion-label>Per Diem</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>License Type</ion-label>
+                    <ion-label>CNA | CNA</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>Number of beds</ion-label>
+                    <ion-label>124</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>Job Instructions</ion-label>
+                    <ion-label>Come fill this shift! Please sign in and out of the quick base system when you arrive and leave the facility</ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -149,6 +180,26 @@ export default defineComponent({
 
   &-status {
 
+  }
+
+  &-properties {
+    ion-row {
+      margin-bottom: .5rem;
+      ion-col {
+        ion-label {
+          display: block;
+          color: var(--ion-color-dark);
+          &:nth-child(1) {
+            color: var(--app-color-purple);
+            line-height: 2em;
+          }
+          &:nth-child(2) {
+            font-size: 20px;
+            line-height: 1.3em;
+          }
+        }
+      }
+    }
   }
 }
 </style>

@@ -18,3 +18,10 @@ ion-toolbar {
     padding-left: 0;
   }
 }
+
+ion-badge {
+  padding: 0.5em;
+  &.ion-color-warning {
+    color: #ffffff;
+  }
+}

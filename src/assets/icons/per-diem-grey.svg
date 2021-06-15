@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>15B39A48-C5F6-423F-8E7F-232FF7AD1927</title>
+    <g id="Design-System" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons_Purple" transform="translate(-31.000000, -4386.000000)">
+            <g id="per_diem_grey" transform="translate(32.000000, 4387.000000)">
+                <path d="M0.29325,8.07125 L8.07125,0.29325 C8.46225,-0.09775 9.09425,-0.09775 9.48525,0.29325 L17.26325,8.07125 C17.65425,8.46225 17.65425,9.09425 17.26325,9.48525 L9.48525,17.26325 C9.09425,17.65425 8.46225,17.65425 8.07125,17.26325 L0.29325,9.48525 C-0.09775,9.09425 -0.09775,8.46225 0.29325,8.07125 Z" id="Rectangle" stroke="#CBC6C6" stroke-width="2"></path>
+                <rect id="Rectangle" fill="#CBC6C6" fill-rule="nonzero" x="7.62625" y="7.61125" width="2.305" height="2.304"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

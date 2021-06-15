@@ -74,6 +74,11 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --app-color-purple: rgb(89,36,176);
+
+  --ion-toolbar-background: var(--app-color-purple);
+  --ion-toolbar-color: var(--ion-color-primary-contrast);
 }
 
 @media (prefers-color-scheme: dark) {

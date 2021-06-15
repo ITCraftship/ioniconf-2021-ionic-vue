@@ -5,12 +5,22 @@ import Home from '../views/Home.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/jobs'
   },
   {
     path: '/home',
-    name: 'Home',
+    name: 'home',
     component: Home
+  },
+  {
+    path: '/jobs',
+    name: 'jobs',
+    component: () => import('@/views/Jobs.vue')
+  },
+  {
+    path: '/jobs/:slug',
+    name: 'jobs.detail',
+    component: () => import('@/views/JobDetail.vue')
   }
 ]
 

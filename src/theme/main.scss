@@ -1,0 +1,20 @@
+@import 'variables';
+
+ion-card.primary-layout {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.button-clear {
+  --color: var(--app-color-purple);
+}
+
+ion-header > ion-toolbar > ion-title {
+  font-weight: 700;
+}
+
+ion-toolbar {
+  ion-back-button ~ ion-title {
+    padding-left: 0;
+  }
+}

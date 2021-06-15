@@ -1,32 +1,33 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
+import { createMemoryHistory, createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue'
+
+const isServer = typeof window === 'undefined';
+const history = isServer ? createMemoryHistory() : createWebHistory(process.env.BASE_URL);
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/jobs'
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/jobs',
-    name: 'jobs',
-    component: () => import('@/views/Jobs.vue')
-  },
-  {
-    path: '/jobs/:slug',
-    name: 'jobs.detail',
-    component: () => import('@/views/JobDetail.vue')
-  }
-]
+    {
+        path: '/',
+        redirect: '/jobs'
+    },
+    {
+        path: '/jobs',
+        name: 'jobs',
+        component: () => import('@/views/Jobs.vue')
+    },
+    {
+        path: '/jobs/:slug',
+        name: 'jobs.detail',
+        component: () => import('@/views/JobDetail.vue')
+    }
+];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+    history,
+    routes
+});
 
-export default router
+export default router;
+
+export function createServerRouter() {
+    return createRouter({routes, history});
+}

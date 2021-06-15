@@ -81,7 +81,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-toolbar-color: var(--ion-color-primary-contrast);
 }
 
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) {
+// disabling dark mode:
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------

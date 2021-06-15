@@ -1,6 +1,6 @@
 import { createSSRApp as createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
+import { createServerRouter as createRouter } from './router';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -25,12 +25,16 @@ import './theme/main.scss';
 
 import AppIcon from './_ui-kits/AppIcon.vue';
 
-const app = createApp(App)
-    .use(IonicVue)
-    .use(router);
+export default function () {
+    const router = createRouter();
+    const app = createApp(App)
+        .use(IonicVue)
+        .use(router);
 
-app.component('app-icon', AppIcon);
+    app.component('app-icon', AppIcon);
 
-router.isReady().then(() => {
-    app.mount('#app');
-});
+    return {
+        app,
+        router
+    };
+}

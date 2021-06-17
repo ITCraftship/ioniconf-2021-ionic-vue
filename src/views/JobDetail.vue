@@ -106,13 +106,67 @@
               <ion-card-header class="ion-text-center">
                 <ion-card-title>Shifts in this job</ion-card-title>
               </ion-card-header>
-              <ion-card-content>job shifts card</ion-card-content>
+              <ion-card-content>
+                <calendar />
+                <div class="ion-text-center">
+                   <h4>Shifts (1)</h4>
+                  <app-icon name="sun-light" size="medium" /><br />
+                  <span>1x8 hours</span>
+                </div>
+                <hr />
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="3" class="ion-text-center"><app-icon name="sun-light" size="medium" /></ion-col>
+                    <ion-col><span>06:00 - 14:00</span></ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="3" class="ion-text-center"><span>Shift 1</span></ion-col>
+                    <ion-col><span>Jun 17, 2021</span></ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-card class="primary-layout">
-          <ion-card-content>job qualification card</ion-card-content>
+
+      <ion-card class="primary-layout job-qualification">
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="3">
+                <ve-progress :progress="17" legend="17" :size="60" :legend-formatter="legendFormatter" color="rgb(89,36,176)">
+                  <span slot="legend">%</span>
+                </ve-progress>
+              </ion-col>
+              <ion-col size="9">
+                <ion-row>
+                  <ion-col size="10">Oops! You need to add credentials</ion-col>
+                  <ion-col size="2"><app-icon name="sun-light" size="medium" /></ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <app-progress-bar :progress="17"></app-progress-bar>
+            </ion-row>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col size="2"><app-icon name="not-allowed-pink" size="medium" /></ion-col>
+                <ion-col><ion-badge color="warning">Long Term Care</ion-badge></ion-col>
+                <ion-col size="2"><app-icon name="add-purple" size="medium" /></ion-col>
+              </ion-row>
+              <ion-row v-for="_ in 5" :key="_">
+                <ion-col size="2"><app-icon name="not-allowed-pink" size="medium" /></ion-col>
+                <ion-col>Resume</ion-col>
+                <ion-col size="2"><app-icon name="add-purple" size="medium" /></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="2"><app-icon name="verification-check-blue" size="medium" /></ion-col>
+                <ion-col>CNA Certificate</ion-col>
+                <ion-col size="2"><app-icon name="chevron-right-purple" size="medium" /></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
       </ion-card>
     </ion-content>
 
@@ -141,9 +195,11 @@
 
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonFooter } from '@ionic/vue';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge } from '@ionic/vue';
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import {AppIcon, JobDetailItem} from "@/_ui-kits";
+import { VeProgress } from "vue-ellipse-progress";
+import {AppIcon, JobDetailItem, Calendar, AppProgressBar} from "@/_ui-kits";
+
 
 export default defineComponent({
   name: 'JobDetail',
@@ -167,6 +223,14 @@ export default defineComponent({
     IonButton,
     JobDetailItem,
     AppIcon,
+    Calendar,
+    AppProgressBar,
+    VeProgress,
+  },
+  methods: {
+    legendFormatter({ currentValue }: any) {
+      return `<img src="/assets/icons/uops.svg" width="20" height="20" /><br />${currentValue}%`
+    }
   }
 });
 </script>
@@ -224,6 +288,51 @@ export default defineComponent({
             font-size: 20px;
             line-height: 1.3em;
           }
+        }
+      }
+    }
+  }
+
+  &-shifts {
+    font-size: 16px;
+    hr {
+      height: 1px;
+      width: 100%;
+      display: block;
+      margin: .5em;
+      border-style: inset;
+      border-width: .5px;
+      color: #a5a5a5;
+      background: #a5a5a5;
+      opacity: .2;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    ion-grid {
+      color: var(--ion-color-dark);
+    }
+  }
+
+  &-qualification {
+    margin: 0 0 16px;
+
+    ion-grid {
+      color: var(--ion-color-dark);
+
+      ion-row {
+        min-height: 70px;
+        &:not(:last-child) {
+          border-bottom: 1px solid #cbc6c6;;
+        }
+
+        ion-col {
+          align-items: center;
+          display: flex;
         }
       }
     }

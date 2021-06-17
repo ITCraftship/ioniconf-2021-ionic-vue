@@ -11,6 +11,11 @@ const icons = {
   'date-grey': require('../assets/icons/date-grey.svg'),
   'share-purple': require('../assets/icons/share-purple.svg'),
   'send-purple': require('../assets/icons/send-purple.svg'),
+  'sun-light': require('../assets/icons/sun-light.svg'),
+  'add-purple': require('../assets/icons/add-purple.svg'),
+  'not-allowed-pink': require('../assets/icons/not-allowed-pink.svg'),
+  'chevron-right-purple': require('../assets/icons/chevron-right-purple.svg'),
+  'verification-check-blue': require('../assets/icons/verification-check-blue.svg'),
 }
 
 export default {
@@ -46,8 +51,12 @@ export default {
 }
 </script>
 
-<style scoped>
-ion-icon.icon--medium {
-  font-size: 21px;
+<style lang="scss" scoped>
+ion-icon {
+  vertical-align: middle;
+
+  &.icon--medium {
+    font-size: 21px;
+  }
 }
 </style>

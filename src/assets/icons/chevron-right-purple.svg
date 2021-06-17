@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60.1 (101010) - https://sketch.com -->
+    <title>8AF4DD69-6461-47BA-AC36-D82485F0FBD8</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <polygon id="path-1" points="32 1653.59 27.6734143 1649 32 1644.41 30.6680162 1643 25 1649 30.6680162 1655"/>
+    </defs>
+    <g id="Design-System" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons_Purple" transform="translate(-25.000000, -1643.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"/>
+            </mask>
+            <use id="arrow_right_purple" fill="#5924B0" transform="translate(28.500000, 1649.000000) rotate(-180.000000) translate(-28.500000, -1649.000000) " xlink:href="#path-1"/>
+        </g>
+    </g>
+</svg>

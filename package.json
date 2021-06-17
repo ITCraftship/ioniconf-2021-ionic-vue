@@ -21,7 +21,9 @@
     "@vue/server-renderer": "3.1.1",
     "core-js": "^3.6.5",
     "express": "4.17.1",
+    "v-calendar": "^2.3.0",
     "vue": "^3.0.0-0",
+    "vue-ellipse-progress": "^2.0.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {

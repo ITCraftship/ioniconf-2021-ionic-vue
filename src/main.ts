@@ -1,8 +1,12 @@
 import { createSSRApp as createApp } from 'vue';
+import { IonicVue } from '@ionic/vue';
+// import VCalendar from 'v-calendar';
+// import Calendar from 'v-calendar/lib/components/calendar.umd'
+
 import App from './App.vue';
 import router from './router';
+import AppIcon from './_ui-kits/AppIcon.vue';
 
-import { IonicVue } from '@ionic/vue';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -23,13 +27,13 @@ import '@ionic/vue/css/display.css';
 /* Theme */
 import './theme/main.scss';
 
-import AppIcon from './_ui-kits/AppIcon.vue';
 
 const app = createApp(App)
     .use(IonicVue)
     .use(router);
 
 app.component('app-icon', AppIcon);
+// app.component('vc-calender', Calendar);
 
 router.isReady().then(() => {
     app.mount('#app');

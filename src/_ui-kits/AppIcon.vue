@@ -17,6 +17,8 @@ const icons = {
   'chevron-right-purple': require('../assets/icons/chevron-right-purple.svg'),
   'verification-check-blue': require('../assets/icons/verification-check-blue.svg'),
   'add-circle': require('../assets/icons/add-circle.svg'),
+  'moon-dark': require('../assets/icons/moon-dark.svg'),
+  'marker-purple': require('../assets/icons/marker-purple.svg'),
 }
 
 export default {

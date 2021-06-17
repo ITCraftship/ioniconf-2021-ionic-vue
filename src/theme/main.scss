@@ -24,4 +24,11 @@ ion-badge {
   &.ion-color-warning {
     color: #ffffff;
   }
+
+  &.color {
+    &--green {
+      background: rgb(29, 129, 146);
+      color: rgb(255, 255, 255);
+    }
+  }
 }

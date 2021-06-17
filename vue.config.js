@@ -1,4 +1,4 @@
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin')
 const nodeExternals = require('webpack-node-externals')
 const webpack = require('webpack')
 
@@ -16,7 +16,20 @@ module.exports = {
             webpackConfig
                 .entry('app')
                 .clear()
-                .add('./src/main.ts')
+                .add('./src/main.ts');
+
+            // Setup proxy for devServer
+            webpackConfig.devServer.merge({
+                proxy: {
+                    '/APP_API': {
+                        target: 'https://ioniconf-2021-jobs.herokuapp.com/',
+                        changeOrigin: true,
+                        logLevel: 'info',
+                        pathRewrite: {'^/APP_API': ''}
+                    }
+                }
+            })
+
             return
         }
 
@@ -35,7 +48,7 @@ module.exports = {
 
         webpackConfig
             .plugin('manifest')
-            .use(new WebpackManifestPlugin({ fileName: 'ssr-manifest.json' }))
+            .use(new WebpackManifestPlugin({fileName: 'ssr-manifest.json'}))
 
         // https://webpack.js.org/configuration/externals/#function
         // https://github.com/liady/webpack-node-externals
@@ -44,7 +57,7 @@ module.exports = {
 
         // Do not externalize dependencies that need to be processed by webpack.
         // You should also whitelist deps that modify `global` (e.g. polyfills)
-        webpackConfig.externals(nodeExternals({ allowlist: /\.(css|vue)$/ }))
+        webpackConfig.externals(nodeExternals({allowlist: /\.(css|vue)$/}))
 
         webpackConfig.optimization.splitChunks(false).minimize(false)
 

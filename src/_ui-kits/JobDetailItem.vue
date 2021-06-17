@@ -4,7 +4,7 @@
       <img :src="cardImageUrl" />
       <div class="job-amount">
         <p>Estimated total amount</p>
-        <h3>$264.82</h3>
+        <h3>${{ $filters.jobAmount(job) }}</h3>
       </div>
       <div class="nurse-amount">
         <p>Nurse pay</p>
@@ -14,7 +14,12 @@
 
     <ion-card-header class="ion-text-center">
       <ion-card-title class="facility__name">Rocky Mountain Care | Rocky Mtn. Care of Logan </ion-card-title>
-      <ion-card-subtitle class="facility__address">1480 N 400 E, Logan, UT, 84341 </ion-card-subtitle>
+      <ion-card-subtitle class="facility__address">
+        <ion-row>
+          <ion-col>{{ $filters.jobFacilityLocation(job) }}</ion-col>
+          <ion-col size="auto"><app-icon name="marker-purple" size="medium" /> </ion-col>
+        </ion-row>
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-row class="card-footer">
       <ion-col class="ion-no-padding">
@@ -30,15 +35,17 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { cardImage } from '@/views/_jobs/data';
+import AppIcon from "@/_ui-kits/AppIcon";
 
 export default defineComponent({
   name: "JobDetailItem",
+  props: ['job'],
   // eslint-disable-next-line vue/no-unused-components
-  components: { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton },
+  components: {AppIcon, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton },
   computed: {
     cardImageUrl() {
       return cardImage
-    }
+    },
   }
 });
 

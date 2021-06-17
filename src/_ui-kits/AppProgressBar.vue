@@ -7,6 +7,12 @@ import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "AppProgressBar",
+  props: {
+    progress: {
+      type: Number,
+      required: true
+    }
+  },
   setup(props) {
     return {
       width: props.progress

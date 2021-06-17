@@ -16,121 +16,123 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-card class="primary-layout job-meta">
-              <ion-card-content>
-                <ion-grid class="ion-no-padding">
+      <div v-if="fetching" class="ion-text-center" ><ion-spinner /></div>
+      <template v-else>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary-layout job-meta">
+                <ion-card-content>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4">
+                        <ion-label>Shift Date</ion-label>
+                        <ion-label>{{ $filters.shiftStartDate(job.job_start_date) }}</ion-label>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-label>Shift Time</ion-label>
+                        <ion-label>{{ job.job_shift }}</ion-label>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-label>License Type</ion-label>
+                        <ion-label><license-badge :type="job.licenseType" /></ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <job-detail-item :job="job" />
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary-layout job-status">
+                <ion-card-header>
+                  <ion-card-title>Job status</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-badge>Viewed</ion-badge>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary-layout job-properties">
+                <ion-card-content>
                   <ion-row>
-                    <ion-col size="4">
-                      <ion-label>Shift Date</ion-label>
-                      <ion-label>Jun 15, 2021</ion-label>
+                    <ion-col>
+                      <ion-label>Speciality</ion-label>
+                      <ion-label><ion-badge color="warning">Long Term Care</ion-badge></ion-label>
                     </ion-col>
-                    <ion-col size="4">
-                      <ion-label>Shift Time</ion-label>
-                      <ion-label>06:00 - 14:00</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-label>Type of Job</ion-label>
+                      <ion-label>{{ $filters.jobTypeLabel(job.job_type) }}</ion-label>
                     </ion-col>
-                    <ion-col size="4">
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
                       <ion-label>License Type</ion-label>
-                      <ion-label><ion-badge>CNA</ion-badge></ion-label>
+                      <ion-label>CNA | CNA</ion-label>
                     </ion-col>
                   </ion-row>
-                </ion-grid>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <job-detail-item />
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-card class="primary-layout job-status">
-              <ion-card-header>
-                <ion-card-title>Job status</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-badge>Viewed</ion-badge>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-card class="primary-layout job-properties">
-              <ion-card-content>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Speciality</ion-label>
-                    <ion-label><ion-badge color="warning">Long Term Care</ion-badge></ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Type of Job</ion-label>
-                    <ion-label>Per Diem</ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>License Type</ion-label>
-                    <ion-label>CNA | CNA</ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Number of beds</ion-label>
-                    <ion-label>124</ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Job Instructions</ion-label>
-                    <ion-label>Come fill this shift! Please sign in and out of the quick base system when you arrive and leave the facility</ion-label>
-                  </ion-col>
-                </ion-row>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-card class="primary-layout job-shifts">
-              <ion-card-header class="ion-text-center">
-                <ion-card-title>Shifts in this job</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <calendar />
-                <div class="ion-text-center">
-                   <h4>Shifts (1)</h4>
-                  <app-icon name="sun-light" size="medium" /><br />
-                  <span>1x8 hours</span>
-                </div>
-                <hr />
-                <ion-grid>
                   <ion-row>
-                    <ion-col size="3" class="ion-text-center"><app-icon name="sun-light" size="medium" /></ion-col>
-                    <ion-col><span>06:00 - 14:00</span></ion-col>
+                    <ion-col>
+                      <ion-label>Number of beds</ion-label>
+                      <ion-label>124</ion-label>
+                    </ion-col>
                   </ion-row>
                   <ion-row>
-                    <ion-col size="3" class="ion-text-center"><span>Shift 1</span></ion-col>
-                    <ion-col><span>Jun 17, 2021</span></ion-col>
+                    <ion-col>
+                      <ion-label>Job Instructions</ion-label>
+                      <ion-label>{{ job.job_description }}</ion-label>
+                    </ion-col>
                   </ion-row>
-                </ion-grid>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-      <ion-card class="primary-layout job-qualification">
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary-layout job-shifts">
+                <ion-card-header class="ion-text-center">
+                  <ion-card-title>Shifts in this job</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <calendar />
+                  <div class="ion-text-center">
+                     <h4>Shifts (1)</h4>
+                    <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /><br />
+                    <span>1x{{ $filters.shiftHoursCount(job.job_shift)}} hours</span>
+                  </div>
+                  <hr />
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="3" class="ion-text-center"><app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /></ion-col>
+                      <ion-col><span>06:00 - 14:00</span></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="3" class="ion-text-center"><span>Shift 1</span></ion-col>
+                      <ion-col><span>Jun 17, 2021</span></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-card class="primary-layout job-qualification">
           <ion-card-content>
             <ion-row>
               <ion-col size="3">
@@ -168,6 +170,7 @@
             </ion-grid>
           </ion-card-content>
       </ion-card>
+      </template>
     </ion-content>
 
     <ion-footer>
@@ -193,17 +196,21 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonFooter } from '@ionic/vue';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge, IonSpinner } from '@ionic/vue';
+import {defineComponent, ref, reactive} from 'vue';
 import { VeProgress } from "vue-ellipse-progress";
-import {AppIcon, JobDetailItem, Calendar, AppProgressBar} from "@/_ui-kits";
+import {AppIcon, JobDetailItem, Calendar, AppProgressBar, LicenseBadge} from "@/_ui-kits";
+import axios from "axios";
+import {useRoute} from "vue-router";
+import {format, parse} from 'date-fns'
 
 
 export default defineComponent({
   name: 'JobDetail',
   components: {
+    LicenseBadge,
     IonContent,
     IonHeader,
     IonPage,
@@ -221,14 +228,42 @@ export default defineComponent({
     IonCol,
     IonBadge,
     IonButton,
+    IonSpinner,
     JobDetailItem,
     AppIcon,
     Calendar,
     AppProgressBar,
     VeProgress,
   },
+  setup() {
+    const route = useRoute();
+    const fetching = ref(true);
+    const jobResult = reactive({
+      error: null,
+      data: null,
+    });
+    const getJob = () => {
+      axios.get(`/APP_API/jobs/${route.params.slug}/details`).then(({data}) => {
+        console.log('result: ', data);
+        jobResult.data = data;
+      }).finally(() => fetching.value = false);
+    }
+    return {
+      getJob,
+      fetching,
+      jobResult,
+    }
+  },
+  created() {
+    this.getJob();
+  },
+  computed: {
+    job() {
+      return this.jobResult.data;
+    },
+  },
   methods: {
-    legendFormatter({ currentValue }: any) {
+    legendFormatter({ currentValue }) {
       return `<img src="/assets/icons/uops.svg" width="20" height="20" /><br />${currentValue}%`
     }
   }

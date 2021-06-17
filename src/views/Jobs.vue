@@ -13,10 +13,11 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-grid>
+      <div v-if="fetching" class="ion-text-center"><ion-spinner  /></div>
+      <ion-grid v-else>
         <ion-row>
-          <ion-col v-for="nth in 12" :key="nth" size="12">
-            <job-list-item></job-list-item>
+          <ion-col v-for="job in jobs" :key="job.job_id" size="12">
+            <job-list-item :job="job" />
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -24,10 +25,12 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/vue';
+<script lang="js">
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonSpinner } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import { ref, reactive } from '@vue/reactivity';
 import JobListItem from '../_ui-kits/JobListItem.vue';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Jobs',
@@ -40,7 +43,28 @@ export default defineComponent({
     JobListItem,
     IonGrid,
     IonRow,
-    IonCol
+    IonCol,
+    IonSpinner
+  },
+  setup() {
+    const canLoadMore = ref(true);
+    const fetching = ref(true);
+    const jobs = reactive([]);
+    const getJobs = (page = 2, fresh = false) => {
+      axios.get(`/APP_API/jobs/?page=${page}`).then(({data}) => {
+        if (fresh) {
+          jobs.concat(data);
+        } else jobs.splice(0, jobs.length - 1, ...data);
+      }).finally(() => fetching.value = false)
+    }
+    return {
+      getJobs,
+      fetching,
+      jobs,
+    }
+  },
+  created() {
+    this.getJobs()
   }
 });
 </script>

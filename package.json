@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "serve:ssr": "npm run build:server && npm run build && node server.js",
     "build": "vue-cli-service build --dest dist/client",
-    "build:server": "SSR=1 vue-cli-service build --dest dist/server",
+    "build:server": "cross-env SSR=1 vue-cli-service build --dest dist/server",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
@@ -39,6 +39,7 @@
     "@vue/compiler-sfc": "^3.0.0-0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.0.0-0",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
     "sass": "^1.34.1",

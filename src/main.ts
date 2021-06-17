@@ -26,14 +26,17 @@ import '@ionic/vue/css/display.css';
 
 /* Theme */
 import './theme/main.scss';
+import {appFilters} from "@/filters";
 
 
 const app = createApp(App)
+    .use(appFilters)
     .use(IonicVue)
     .use(router);
 
 app.component('app-icon', AppIcon);
 // app.component('vc-calender', Calendar);
+
 
 router.isReady().then(() => {
     app.mount('#app');

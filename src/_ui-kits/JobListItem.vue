@@ -4,26 +4,26 @@
       <img :src="cardImageUrl" />
       <div class="job-amount">
         <p>Estimated total amount</p>
-        <h3>$264.82</h3>
+        <h3>${{ $filters.jobAmount(job) }}</h3>
       </div>
     </div>
 
     <ion-card-header>
-      <ion-card-title class="facility__name">Rocky Mountain Care | Rocky Mtn. Care of Logan </ion-card-title>
-      <ion-card-subtitle class="facility__address">1480 N 400 E, Logan, UT, 84341 </ion-card-subtitle>
+      <ion-card-title class="facility__name">{{ job.facility.fac_name }} </ion-card-title>
+      <ion-card-subtitle class="facility__address">{{ $filters.jobFacilityLocation(job) }}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
         <ion-row class="card-meta">
-          <ion-col class="ion-no-padding"><app-icon name="per-diem-grey" size="medium" /><br /> Per Diem</ion-col>
-          <ion-col class="ion-no-padding"><app-icon name="date-grey" size="medium" /><br /> Jun 1st 2021</ion-col>
-          <ion-col class="ion-no-padding"><app-icon name="day-shift-grey" size="medium" /><br /> 06:00 - 14:00</ion-col>
+          <ion-col class="ion-no-padding"><app-icon name="per-diem-grey" size="medium" /><br /> {{ $filters.jobTypeLabel(job.job_type) }}</ion-col>
+          <ion-col class="ion-no-padding"><app-icon name="date-grey" size="medium" /><br /> {{ $filters.shiftStartDate(job.job_start_date) }}</ion-col>
+          <ion-col class="ion-no-padding"><app-icon name="day-shift-grey" size="medium" /><br /> {{ job.job_shift }}</ion-col>
         </ion-row>
     </ion-card-content>
     <hr />
     <ion-row class="card-footer">
       <ion-col class="ion-no-padding">
-        <router-link custom :to="{name: 'jobs.detail', params: {slug: 'nice-job'}}" v-slot="{href}">
+        <router-link custom :to="{name: 'jobs.detail', params: {slug: job.job_id}}" v-slot="{href}">
           <ion-button fill="clear" expand="full" :router-link="href">
           More Details
           </ion-button>
@@ -36,15 +36,20 @@
 <script>
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { cardImage } from '@/views/_jobs/data';
 
 export default defineComponent({
   name: "JobListItem",
   // eslint-disable-next-line vue/no-unused-components
   components: { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton },
+  props: {
+    job: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
     cardImageUrl() {
-      return cardImage
+      return this.job.facility.image_url
     }
   }
 });

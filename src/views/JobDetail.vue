@@ -141,7 +141,7 @@
               <ion-col size="9">
                 <ion-row>
                   <ion-col size="10">Oops! You need to add credentials</ion-col>
-                  <ion-col size="2"><app-icon name="sun-light" size="medium" /></ion-col>
+                  <ion-col size="2" class="ion-align-self-center"><app-icon name="add-circle" size="medium" /></ion-col>
                 </ion-row>
               </ion-col>
             </ion-row>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>AD544A53-CF5F-4E3A-BF31-29AC72DFDF60</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M25,594 L23,594 L23,598 L19,598 L19,600 L23,600 L23,604 L25,604 L25,600 L29,600 L29,598 L25,598 L25,594 Z M24,589 C18.48,589 14,593.48 14,599 C14,604.52 18.48,609 24,609 C29.52,609 34,604.52 34,599 C34,593.48 29.52,589 24,589 Z M24,607 C19.59,607 16,603.41 16,599 C16,594.59 19.59,591 24,591 C28.41,591 32,594.59 32,599 C32,603.41 28.41,607 24,607 Z" id="path-1"/>
+    </defs>
+    <g id="Design-System" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons_Purple" transform="translate(-14.000000, -589.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"/>
+            </mask>
+            <use id="add_circle_purple" fill="#5924B0" xlink:href="#path-1"/>
+        </g>
+    </g>
+</svg>

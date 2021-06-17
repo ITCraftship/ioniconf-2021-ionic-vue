@@ -16,6 +16,7 @@ const icons = {
   'not-allowed-pink': require('../assets/icons/not-allowed-pink.svg'),
   'chevron-right-purple': require('../assets/icons/chevron-right-purple.svg'),
   'verification-check-blue': require('../assets/icons/verification-check-blue.svg'),
+  'add-circle': require('../assets/icons/add-circle.svg'),
 }
 
 export default {

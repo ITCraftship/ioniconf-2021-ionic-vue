@@ -130,9 +130,10 @@
           <ion-card-content>
             <ion-row>
               <ion-col size="3">
-                <ve-progress :progress="17" legend="17" :size="60" :legend-formatter="legendFormatter" color="rgb(89,36,176)">
-                  <span slot="legend">%</span>
-                </ve-progress>
+<!--                TODO: replace with a component that doesn't break SSR-->
+<!--                <ve-progress :progress="17" legend="17" :size="60" :legend-formatter="legendFormatter" color="rgb(89,36,176)">-->
+<!--                  <span slot="legend">%</span>-->
+<!--                </ve-progress>-->
               </ion-col>
               <ion-col size="9">
                 <ion-row>
@@ -194,11 +195,11 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonFooter } from '@ionic/vue';
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge, IonSpinner } from '@ionic/vue';
 import {defineComponent, ref, reactive} from 'vue';
-import { VeProgress } from "vue-ellipse-progress";
+// import { VeProgress } from "vue-ellipse-progress";
 import {AppIcon, JobDetailItem, Calendar, AppProgressBar, LicenseBadge} from "@/_ui-kits";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import {format, parse} from 'date-fns'
+// import {format, parse} from 'date-fns'
 
 
 export default defineComponent({
@@ -227,7 +228,7 @@ export default defineComponent({
     AppIcon,
     Calendar,
     AppProgressBar,
-    VeProgress,
+    // VeProgress,
   },
   setup() {
     const route = useRoute();
@@ -238,7 +239,6 @@ export default defineComponent({
     });
     const getJob = () => {
       axios.get(`https://ioniconf-2021-jobs.herokuapp.com/jobs/${route.params.slug}/details`).then(({data}) => {
-        console.log('result: ', data);
         jobResult.data = data;
       }).finally(() => fetching.value = false);
     }

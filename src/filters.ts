@@ -6,7 +6,6 @@ export const appFilters = {
         // filters
         app.config.globalProperties.$filters = {
             shiftIconName(shiftTime = '00:00') {
-                console.log('shiftTime', shiftTime)
                 return Number(shiftTime.split(':')[0] || 0) >= 18 ? 'moon-dark' : 'sun-light';
             },
             shiftHoursCount(jobShift: string) {

@@ -6,3 +6,5 @@ declare module '*.vue' {
 
 declare module 'v-calendar/*';
 declare module 'vue-ellipse-progress';
+
+declare const cordova;

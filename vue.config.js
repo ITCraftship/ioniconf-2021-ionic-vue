@@ -18,18 +18,6 @@ module.exports = {
                 .clear()
                 .add('./src/main.ts');
 
-            // Setup proxy for devServer
-            webpackConfig.devServer.merge({
-                proxy: {
-                    '/APP_API': {
-                        target: 'https://ioniconf-2021-jobs.herokuapp.com/',
-                        changeOrigin: true,
-                        logLevel: 'info',
-                        pathRewrite: {'^/APP_API': ''}
-                    }
-                }
-            })
-
             return
         }
 

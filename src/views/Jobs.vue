@@ -1,18 +1,12 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header :translucent="false">
       <ion-toolbar>
         <ion-title>Jobs</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Jobs</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
       <div v-if="fetching" class="ion-text-center"><ion-spinner  /></div>
       <ion-grid v-else>
         <ion-row>
@@ -50,8 +44,8 @@ export default defineComponent({
     const canLoadMore = ref(true);
     const fetching = ref(true);
     const jobs = reactive([]);
-    const getJobs = (page = 2, fresh = false) => {
-      axios.get(`/APP_API/jobs/?page=${page}`).then(({data}) => {
+    const getJobs = (page = 1, fresh = false) => {
+      axios.get(`https://ioniconf-2021-jobs.herokuapp.com/jobs/?page=${page}`).then(({data}) => {
         if (fresh) {
           jobs.concat(data);
         } else jobs.splice(0, jobs.length - 1, ...data);

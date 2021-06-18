@@ -10,7 +10,9 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <div v-if="fetching" class="ion-text-center" ><ion-spinner /></div>
+      <div v-if="fetching" class="ion-text-center">
+        <ion-spinner/>
+      </div>
       <template v-else>
         <ion-grid>
           <ion-row>
@@ -29,7 +31,9 @@
                       </ion-col>
                       <ion-col size="4">
                         <ion-label>License Type</ion-label>
-                        <ion-label><license-badge :type="job.licenseType" /></ion-label>
+                        <ion-label>
+                          <license-badge :type="job.licenseType"/>
+                        </ion-label>
                       </ion-col>
                     </ion-row>
                   </ion-grid>
@@ -42,7 +46,7 @@
             <ion-col size="12" size-md="6">
               <ion-row>
                 <ion-col size="12">
-                  <job-detail-item :job="job" />
+                  <job-detail-item :job="job"/>
                 </ion-col>
                 <ion-col size="12" class="ion-hide-md-up">
                   <ion-card class="primary-layout job-status">
@@ -62,7 +66,9 @@
                   <ion-row>
                     <ion-col>
                       <ion-label>Speciality</ion-label>
-                      <ion-label><ion-badge color="warning">Long Term Care</ion-badge></ion-label>
+                      <ion-label>
+                        <ion-badge color="warning">Long Term Care</ion-badge>
+                      </ion-label>
                     </ion-col>
                   </ion-row>
                   <ion-row>
@@ -103,18 +109,21 @@
                 <ion-card-content>
                   <ion-row>
                     <ion-col size="12" size-md="6">
-                      <calendar />
+                      <calendar/>
                     </ion-col>
                     <ion-col class="ion-hide-md-up">
                       <div class="ion-text-center">
                         <h4>Shifts (1)</h4>
-                        <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /><br />
-                        <span>1x{{ $filters.shiftHoursCount(job.job_shift)}} hours</span>
+                        <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium"/>
+                        <br/>
+                        <span>1x{{ $filters.shiftHoursCount(job.job_shift) }} hours</span>
                       </div>
-                      <hr />
+                      <hr/>
                       <ion-grid>
                         <ion-row>
-                          <ion-col size="3" class="ion-text-center"><app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /></ion-col>
+                          <ion-col size="3" class="ion-text-center">
+                            <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium"/>
+                          </ion-col>
                           <ion-col><span>06:00 - 14:00</span></ion-col>
                         </ion-row>
                         <ion-row>
@@ -133,8 +142,14 @@
                       <div class="shift-details">
                         <ion-card class="ion-padding">
                           <ion-row>
-                            <ion-col size="auto"><app-icon name="date-grey" size="medium" /> {{ $filters.shiftStartDate(job.job_start_date) }}</ion-col>
-                            <ion-col size="auto"><app-icon name="day-shift-grey" size="medium" /> {{ job.job_shift }}</ion-col>
+                            <ion-col size="auto">
+                              <app-icon name="date-grey" size="medium"/>
+                              {{ $filters.shiftStartDate(job.job_start_date) }}
+                            </ion-col>
+                            <ion-col size="auto">
+                              <app-icon name="day-shift-grey" size="medium"/>
+                              {{ job.job_shift }}
+                            </ion-col>
                           </ion-row>
                         </ion-card>
                       </div>
@@ -151,15 +166,17 @@
           <ion-card-content>
             <ion-row>
               <ion-col size="3">
-<!--                TODO: replace with a component that doesn't break SSR-->
-<!--                <ve-progress :progress="17" legend="17" :size="60" :legend-formatter="legendFormatter" color="rgb(89,36,176)">-->
-<!--                  <span slot="legend">%</span>-->
-<!--                </ve-progress>-->
+                <!--                TODO: replace with a component that doesn't break SSR-->
+                <!--                <ve-progress :progress="17" legend="17" :size="60" :legend-formatter="legendFormatter" color="rgb(89,36,176)">-->
+                <!--                  <span slot="legend">%</span>-->
+                <!--                </ve-progress>-->
               </ion-col>
               <ion-col size="9">
                 <ion-row>
                   <ion-col size="10">Oops! You need to add credentials</ion-col>
-                  <ion-col size="2" class="ion-align-self-center"><app-icon name="add-circle" size="medium" /></ion-col>
+                  <ion-col size="2" class="ion-align-self-center">
+                    <app-icon name="add-circle" size="medium"/>
+                  </ion-col>
                 </ion-row>
               </ion-col>
             </ion-row>
@@ -169,23 +186,37 @@
 
             <ion-grid>
               <ion-row>
-                <ion-col size="2"><app-icon name="not-allowed-pink" size="medium" /></ion-col>
-                <ion-col><ion-badge color="warning">Long Term Care</ion-badge></ion-col>
-                <ion-col size="2"><app-icon name="add-purple" size="medium" /></ion-col>
+                <ion-col size="2">
+                  <app-icon name="not-allowed-pink" size="medium"/>
+                </ion-col>
+                <ion-col>
+                  <ion-badge color="warning">Long Term Care</ion-badge>
+                </ion-col>
+                <ion-col size="2">
+                  <app-icon name="add-purple" size="medium"/>
+                </ion-col>
               </ion-row>
               <ion-row v-for="_ in 5" :key="_">
-                <ion-col size="2"><app-icon name="not-allowed-pink" size="medium" /></ion-col>
+                <ion-col size="2">
+                  <app-icon name="not-allowed-pink" size="medium"/>
+                </ion-col>
                 <ion-col>Resume</ion-col>
-                <ion-col size="2"><app-icon name="add-purple" size="medium" /></ion-col>
+                <ion-col size="2">
+                  <app-icon name="add-purple" size="medium"/>
+                </ion-col>
               </ion-row>
               <ion-row>
-                <ion-col size="2"><app-icon name="verification-check-blue" size="medium" /></ion-col>
+                <ion-col size="2">
+                  <app-icon name="verification-check-blue" size="medium"/>
+                </ion-col>
                 <ion-col>CNA Certificate</ion-col>
-                <ion-col size="2"><app-icon name="chevron-right-purple" size="medium" /></ion-col>
+                <ion-col size="2">
+                  <app-icon name="chevron-right-purple" size="medium"/>
+                </ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-content>
-      </ion-card>
+        </ion-card>
       </template>
     </ion-content>
 
@@ -194,7 +225,7 @@
         <ion-col class="ion-no-padding">
           <ion-button fill="clear" expand="full">
             <span>
-              <app-icon name="share-purple" size="medium" />
+              <app-icon name="share-purple" size="medium"/>
             <span>ShiftShare<sup>TM</sup></span>
             </span>
           </ion-button>
@@ -202,7 +233,7 @@
         <ion-col class="ion-no-padding">
           <ion-button fill="clear" expand="full">
             <span>
-              <app-icon name="send-purple" size="medium" />
+              <app-icon name="send-purple" size="medium"/>
               <span>Request Job</span>
             </span>
           </ion-button>
@@ -213,11 +244,29 @@
 </template>
 
 <script>
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonFooter } from '@ionic/vue';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonLabel, IonGrid, IonRow, IonCol, IonButton, IonBadge, IonSpinner } from '@ionic/vue';
-import {defineComponent, ref, reactive} from 'vue';
+import {
+  IonBackButton,
+  IonBadge,
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCol,
+  IonContent,
+  IonFooter,
+  IonGrid,
+  IonHeader,
+  IonLabel,
+  IonPage,
+  IonRow,
+  IonSpinner,
+  IonTitle,
+  IonToolbar
+} from '@ionic/vue';
+import {defineComponent, reactive, ref} from 'vue';
 // import { VeProgress } from "vue-ellipse-progress";
-import {AppIcon, JobDetailItem, Calendar, AppProgressBar, LicenseBadge} from "@/_ui-kits";
+import {AppIcon, AppProgressBar, Calendar, JobDetailItem, LicenseBadge} from "@/_ui-kits";
 import axios from "axios";
 import {useRoute} from "vue-router";
 // import {format, parse} from 'date-fns'
@@ -278,7 +327,7 @@ export default defineComponent({
     },
   },
   methods: {
-    legendFormatter({ currentValue }) {
+    legendFormatter({currentValue}) {
       return `<img src="/assets/icons/uops.svg" width="20" height="20" /><br />${currentValue}%`
     }
   }
@@ -286,12 +335,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../theme/intro";/* cann be configured to auto-load into scss scripts */
+@import "../theme/intro"; /* cann be configured to auto-load into scss scripts */
 
 .job {
   &-meta {
     ion-card-content ion-row {
       position: relative;
+
       ion-col {
         &:not(:last-child):after {
           content: "";
@@ -332,14 +382,17 @@ export default defineComponent({
 
     ion-row {
       margin-bottom: .5rem;
+
       ion-col {
         ion-label {
           display: block;
           color: var(--ion-color-dark);
+
           &:nth-child(1) {
             color: var(--app-color-purple);
             line-height: 2em;
           }
+
           &:nth-child(2) {
             font-size: 20px;
             line-height: 1.3em;
@@ -351,6 +404,7 @@ export default defineComponent({
 
   &-shifts {
     font-size: 16px;
+
     hr {
       height: 1px;
       width: 100%;
@@ -395,6 +449,7 @@ export default defineComponent({
         ion-icon {
           margin-right: 15px;
         }
+
         ion-col {
           position: relative;
           min-width: 150px;
@@ -411,6 +466,7 @@ export default defineComponent({
 
       ion-row {
         min-height: 70px;
+
         &:not(:last-child) {
           border-bottom: 1px solid #cbc6c6;;
         }
@@ -451,6 +507,7 @@ ion-footer {
     > span > ion-icon {
       margin-bottom: 5px;
     }
+
     span {
       display: block;
       width: 100%;

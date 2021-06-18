@@ -20,15 +20,16 @@
     "@capacitor/keyboard": "1.0.0",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
+    "@vue/reactivity": "3.1.1",
     "@vue/server-renderer": "3.1.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "date-fns": "^2.22.1",
     "express": "4.17.1",
     "v-calendar": "^2.3.0",
-    "vue": "^3.0.0-0",
+    "vue": "^3.1.1",
     "vue-ellipse-progress": "^2.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.9"
   },
   "devDependencies": {
     "@capacitor/cli": "3.0.0",

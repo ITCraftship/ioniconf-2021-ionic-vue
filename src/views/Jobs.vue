@@ -10,7 +10,7 @@
       <div v-if="fetching" class="ion-text-center"><ion-spinner  /></div>
       <ion-grid v-else>
         <ion-row>
-          <ion-col v-for="job in jobs" :key="job.job_id" size="12">
+          <ion-col v-for="job in jobs" :key="job.job_id" size="12" size-md="6" size-sm="6" size-lg="4">
             <job-list-item :job="job" />
           </ion-col>
         </ion-row>

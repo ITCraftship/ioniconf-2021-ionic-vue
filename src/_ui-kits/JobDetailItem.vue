@@ -34,7 +34,6 @@
 <script>
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { cardImage } from '@/views/_jobs/data';
 import AppIcon from "@/_ui-kits/AppIcon";
 
 export default defineComponent({
@@ -44,7 +43,7 @@ export default defineComponent({
   components: {AppIcon, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton },
   computed: {
     cardImageUrl() {
-      return cardImage
+      return this.job.facility.image_url
     },
   }
 });
@@ -52,14 +51,30 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-ion-card-content {
-  padding-bottom: 0;
+@import "../theme/intro";/* cann be configured to auto-load into scss scripts */
+
+ion-card {
+  @include media-breakpoint-up(md) {
+    box-shadow: unset;
+    border-radius: 0;
+  }
+
+  > ion-card-header, > ion-row {
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
 }
 img {
   width: 100%;
   height: 100%;
   -o-object-fit:cover;
-  object-fit:cover
+  object-fit:cover;
+  @include media-breakpoint-up(md) {
+    -o-object-fit: unset;
+    object-fit: unset;
+    height: auto;
+  }
 }
 .img-container {
   position: relative;
@@ -76,6 +91,9 @@ img {
     position: absolute;
     background: var(--app-color-purple);
     opacity: .45;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
   }
 }
 .job-amount {

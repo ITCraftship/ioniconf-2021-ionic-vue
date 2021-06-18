@@ -39,26 +39,24 @@
           </ion-row>
 
           <ion-row>
-            <ion-col>
-              <job-detail-item :job="job" />
+            <ion-col size="12" size-md="6">
+              <ion-row>
+                <ion-col size="12">
+                  <job-detail-item :job="job" />
+                </ion-col>
+                <ion-col size="12" class="ion-hide-md-up">
+                  <ion-card class="primary-layout job-status">
+                    <ion-card-header>
+                      <ion-card-title>Job status</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-badge>Viewed</ion-badge>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
             </ion-col>
-          </ion-row>
-
-          <ion-row>
-            <ion-col>
-              <ion-card class="primary-layout job-status">
-                <ion-card-header>
-                  <ion-card-title>Job status</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-badge>Viewed</ion-badge>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-
-          <ion-row>
-            <ion-col>
+            <ion-col size="12" size-md="6">
               <ion-card class="primary-layout job-properties">
                 <ion-card-content>
                   <ion-row>
@@ -99,27 +97,50 @@
           <ion-row>
             <ion-col>
               <ion-card class="primary-layout job-shifts">
-                <ion-card-header class="ion-text-center">
+                <ion-card-header>
                   <ion-card-title>Shifts in this job</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                  <calendar />
-                  <div class="ion-text-center">
-                     <h4>Shifts (1)</h4>
-                    <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /><br />
-                    <span>1x{{ $filters.shiftHoursCount(job.job_shift)}} hours</span>
-                  </div>
-                  <hr />
-                  <ion-grid>
-                    <ion-row>
-                      <ion-col size="3" class="ion-text-center"><app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /></ion-col>
-                      <ion-col><span>06:00 - 14:00</span></ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="3" class="ion-text-center"><span>Shift 1</span></ion-col>
-                      <ion-col><span>Jun 17, 2021</span></ion-col>
-                    </ion-row>
-                  </ion-grid>
+                  <ion-row>
+                    <ion-col size="12" size-md="6">
+                      <calendar />
+                    </ion-col>
+                    <ion-col class="ion-hide-md-up">
+                      <div class="ion-text-center">
+                        <h4>Shifts (1)</h4>
+                        <app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /><br />
+                        <span>1x{{ $filters.shiftHoursCount(job.job_shift)}} hours</span>
+                      </div>
+                      <hr />
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col size="3" class="ion-text-center"><app-icon :name="$filters.shiftIconName(job.shift_time)" size="medium" /></ion-col>
+                          <ion-col><span>06:00 - 14:00</span></ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col size="3" class="ion-text-center"><span>Shift 1</span></ion-col>
+                          <ion-col><span>Jun 17, 2021</span></ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-col>
+                    <ion-col class="col-lg ion-hide-md-down">
+                      <ion-row>
+                        <ion-col>
+                          <h4>Shifts (1)</h4>
+                        </ion-col>
+                      </ion-row>
+
+                      <div class="shift-details">
+                        <ion-card class="ion-padding">
+                          <ion-row>
+                            <ion-col size="auto"><app-icon name="date-grey" size="medium" /> {{ $filters.shiftStartDate(job.job_start_date) }}</ion-col>
+                            <ion-col size="auto"><app-icon name="day-shift-grey" size="medium" /> {{ job.job_shift }}</ion-col>
+                          </ion-row>
+                        </ion-card>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -265,6 +286,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../theme/intro";/* cann be configured to auto-load into scss scripts */
+
 .job {
   &-meta {
     ion-card-content ion-row {
@@ -303,6 +326,10 @@ export default defineComponent({
   }
 
   &-properties {
+    @include media-breakpoint-up(md) {
+      box-shadow: unset !important;
+    }
+
     ion-row {
       margin-bottom: .5rem;
       ion-col {
@@ -345,6 +372,35 @@ export default defineComponent({
     ion-grid {
       color: var(--ion-color-dark);
     }
+
+    ion-card-header {
+      text-align: center;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+
+    .col-lg {
+      h4 {
+        margin-top: 15px;
+      }
+
+      ion-card {
+        width: auto;
+        display: inline-block;
+      }
+
+      .shift-details {
+        ion-icon {
+          margin-right: 15px;
+        }
+        ion-col {
+          position: relative;
+          min-width: 150px;
+        }
+      }
+    }
   }
 
   &-qualification {
@@ -370,6 +426,11 @@ export default defineComponent({
 
 ion-footer {
   background: #ddf5ff;
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+
   ion-col:not(:last-child):after {
     content: "";
     position: absolute;

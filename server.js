@@ -18,8 +18,8 @@ server.use(
 )
 
 server.get('*', async (req, res) => {
-    const createAppReult = createApp();
-    const { app, router } =  createAppReult;
+    const createAppResult = createApp();
+    const { app, router } =  createAppResult;
 
     await router.push(req.url)
     await router.isReady()

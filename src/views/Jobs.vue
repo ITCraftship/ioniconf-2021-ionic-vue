@@ -7,24 +7,27 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <div v-if="fetching" class="ion-text-center"><ion-spinner  /></div>
-      <ion-grid v-else>
-        <ion-row>
-          <ion-col v-for="job in jobs" :key="job.job_id" size="12" size-md="6" size-sm="6" size-lg="4">
-            <job-list-item :job="job" />
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <div v-if="error" class="ion-text-center">
+        {{ error }}
+      </div>
+      <suspense v-else>
+        <template #default>
+          <jobs-list/>
+        </template>
+        <template #fallback>
+          <div class="spinner-container ion-text-center">
+            <ion-spinner/>
+          </div>
+        </template>
+      </suspense>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="js">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonSpinner } from '@ionic/vue';
-import { defineComponent } from 'vue';
-import { ref, reactive } from '@vue/reactivity';
-import JobListItem from '../_ui-kits/JobListItem.vue';
-import axios from 'axios';
+import {IonContent, IonHeader, IonPage, IonSpinner, IonTitle, IonToolbar} from '@ionic/vue';
+import {defineAsyncComponent, defineComponent, onErrorCaptured} from 'vue';
+import {ref} from "@vue/reactivity";
 
 export default defineComponent({
   name: 'Jobs',
@@ -34,35 +37,28 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    JobListItem,
-    IonGrid,
-    IonRow,
-    IonCol,
+    JobsList: defineAsyncComponent(() => import('./JobsList')),
     IonSpinner
   },
   setup() {
-    const canLoadMore = ref(true);
-    const fetching = ref(true);
-    const jobs = reactive([]);
-    const getJobs = (page = 1, fresh = false) => {
-      axios.get(`https://ioniconf-2021-jobs.herokuapp.com/jobs/?page=${page}`).then(({data}) => {
-        if (fresh) {
-          jobs.concat(data);
-        } else jobs.splice(0, jobs.length - 1, ...data);
-      }).finally(() => fetching.value = false)
-    }
+    const error = ref(null);
+    onErrorCaptured(e => {
+      error.value = e
+      return true
+    });
+
     return {
-      getJobs,
-      fetching,
-      jobs,
+      error
     }
-  },
-  created() {
-    this.getJobs()
   }
 });
 </script>
 
 <style scoped>
-
+.spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>

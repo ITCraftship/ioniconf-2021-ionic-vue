@@ -1,4 +1,4 @@
-import { createApp as createWebApp, createSSRApp } from 'vue';
+import { createApp as createWebApp } from 'vue';
 import { IonicVue } from '@ionic/vue';
 import App from './App.vue';
 import router from './router';
@@ -25,8 +25,10 @@ import '@ionic/vue/css/display.css';
 import './theme/main.scss';
 import { appFilters } from '@/filters';
 
+// TODO: we should use createSSRApp to support hydration, however there are issues with async/suspense
 // if running in cordova, we don't want to use createSSRApp
-const createApp = typeof cordova !== 'undefined' ? createWebApp : createSSRApp;
+// const createApp = typeof cordova !== 'undefined' ? createWebApp : createSSRApp;
+const createApp = createWebApp;
 
 const app = createApp(App)
     .use(appFilters)

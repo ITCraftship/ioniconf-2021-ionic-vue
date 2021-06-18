@@ -23,12 +23,14 @@ import '@ionic/vue/css/display.css';
 /* Theme */
 import './theme/main.scss';
 
+import { appFilters } from '@/filters';
 import AppIcon from './_ui-kits/AppIcon.vue';
 
 export default function () {
     const router = createRouter();
     const app = createApp(App)
         .use(IonicVue)
+        .use(appFilters)
         .use(router);
 
     app.component('app-icon', AppIcon);

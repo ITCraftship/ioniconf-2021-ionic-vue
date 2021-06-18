@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header :translucent="false">
       <ion-toolbar>
         <router-link custom :to="{name: 'jobs'}" v-slot="{href}">
           <ion-back-button slot="start" :defaultHref="href" icon="chevron-back"></ion-back-button>
@@ -10,12 +10,6 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Job Details</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
       <div v-if="fetching" class="ion-text-center" ><ion-spinner /></div>
       <template v-else>
         <ion-grid>
@@ -243,7 +237,7 @@ export default defineComponent({
       data: null,
     });
     const getJob = () => {
-      axios.get(`/APP_API/jobs/${route.params.slug}/details`).then(({data}) => {
+      axios.get(`https://ioniconf-2021-jobs.herokuapp.com/jobs/${route.params.slug}/details`).then(({data}) => {
         console.log('result: ', data);
         jobResult.data = data;
       }).finally(() => fetching.value = false);

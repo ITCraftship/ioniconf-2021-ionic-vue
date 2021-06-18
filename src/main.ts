@@ -1,8 +1,5 @@
-import { createSSRApp as createApp } from 'vue';
+import { createApp as createWebApp, createSSRApp } from 'vue';
 import { IonicVue } from '@ionic/vue';
-// import VCalendar from 'v-calendar';
-// import Calendar from 'v-calendar/lib/components/calendar.umd'
-
 import App from './App.vue';
 import router from './router';
 import AppIcon from './_ui-kits/AppIcon.vue';
@@ -26,8 +23,10 @@ import '@ionic/vue/css/display.css';
 
 /* Theme */
 import './theme/main.scss';
-import {appFilters} from "@/filters";
+import { appFilters } from '@/filters';
 
+// if running in cordova, we don't want to use createSSRApp
+const createApp = typeof cordova !== 'undefined' ? createWebApp : createSSRApp;
 
 const app = createApp(App)
     .use(appFilters)
@@ -35,8 +34,6 @@ const app = createApp(App)
     .use(router);
 
 app.component('app-icon', AppIcon);
-// app.component('vc-calender', Calendar);
-
 
 router.isReady().then(() => {
     app.mount('#app');

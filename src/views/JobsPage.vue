@@ -30,14 +30,14 @@ import {defineAsyncComponent, defineComponent, onErrorCaptured} from 'vue';
 import {ref} from "@vue/reactivity";
 
 export default defineComponent({
-  name: 'Jobs',
+  name: 'JobsPage',
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
     IonToolbar,
-    JobsList: defineAsyncComponent(() => import('./JobsList')),
+    JobsList: defineAsyncComponent(() => import('./components/JobsList')),
     IonSpinner
   },
   setup() {

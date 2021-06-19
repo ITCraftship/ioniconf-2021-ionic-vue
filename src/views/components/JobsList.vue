@@ -13,7 +13,7 @@ import {IonCol, IonGrid, IonRow} from '@ionic/vue';
 import {defineComponent} from 'vue';
 import axios from 'axios';
 
-import {JobListItem} from "../_ui-kits";
+import {JobListItem} from "../../_ui-kits";
 
 export default defineComponent({
   name: 'JobsList',

@@ -155,11 +155,11 @@ img {
   }
 
   &__address {
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     font-size: 13px;
     line-height: 16px;
     letter-spacing: .38px;
-    color: #9f9f9f;
+    color: #5f5f5f;
     padding-top: 4px;
   }
 }

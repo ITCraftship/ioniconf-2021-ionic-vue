@@ -27,6 +27,10 @@ ion-badge {
       background: rgb(29, 129, 146);
       color: rgb(255, 255, 255);
     }
+    &--default {
+      background: rgb(223, 203, 255);
+      color: var(--ion-color-primary);
+    }
   }
 }
 </style>

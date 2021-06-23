@@ -24,6 +24,10 @@ ion-badge {
   &.ion-color-warning {
     color: #ffffff;
   }
+  &.ion-color-success {
+    color: rgb(0, 103, 18);
+    background-color: rgb(217, 255, 213);
+  }
 
   &.color {
     &--green {

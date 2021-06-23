@@ -9,11 +9,21 @@
     </div>
 
     <ion-card-header>
+      <ion-badge color="success">Open</ion-badge> <license-badge :type="job.licenseType" />
       <ion-card-title class="facility__name">{{ job.facility.fac_name }}</ion-card-title>
       <ion-card-subtitle class="facility__address">{{ $filters.jobFacilityLocation(job) }}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-badge
+              v-for="js in job.jobSpecialties"
+              :key="js.specialty.specialty_acronym"
+              :style="`background: ${js.specialty.specialty_color}`"
+          >{{ job.jobSpecialties.length > 1 ? js.specialty.specialty_acronym : js.specialty.specialty_title }}</ion-badge>
+        </ion-col>
+      </ion-row>
       <ion-row class="card-meta">
         <ion-col class="ion-no-padding">
           <app-icon name="per-diem-grey" size="medium"/>
@@ -51,14 +61,15 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonCol,
-  IonRow
+  IonRow,
+  IonBadge
 } from '@ionic/vue';
 import {defineComponent} from 'vue';
+import {LicenseBadge} from "@/_ui-kits/index";
 
 export default defineComponent({
   name: "JobListItem",
-  // eslint-disable-next-line vue/no-unused-components
-  components: {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton},
+  components: {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonButton, IonBadge, LicenseBadge},
   props: {
     job: {
       type: Object,
@@ -75,8 +86,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+ion-card-header {
+  padding-top: 8px;
+}
 ion-card-content {
   padding-bottom: 0;
+}
+ion-badge {
+  margin-bottom: 15px;
+  + ion-badge {
+    margin-left: 8px;
+  }
 }
 
 img {
@@ -131,7 +151,7 @@ img {
     line-height: 24px;
     letter-spacing: .5px;
     color: rgba(0, 0, 0, .87);
-    padding-top: 4px;
+    margin-top: 0;
   }
 
   &__address {

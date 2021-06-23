@@ -40,7 +40,7 @@
                   <ion-card-title>Job status</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                  <ion-badge>Viewed</ion-badge>
+                  <ion-badge color="success">Open</ion-badge>
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -53,7 +53,11 @@
                 <ion-col>
                   <ion-label>Speciality</ion-label>
                   <ion-label>
-                    <ion-badge color="warning">Long Term Care</ion-badge>
+                    <ion-badge
+                        v-for="js in job.jobSpecialties"
+                        :key="js.specialty.specialty_acronym"
+                        :style="`background: ${js.specialty.specialty_color}`"
+                    >{{ job.jobSpecialties.length > 1 ? js.specialty.specialty_acronym : js.specialty.specialty_title }}</ion-badge>
                   </ion-label>
                 </ion-col>
               </ion-row>
@@ -176,7 +180,7 @@
               <app-icon name="not-allowed-pink" size="medium"/>
             </ion-col>
             <ion-col>
-              <ion-badge color="warning">Long Term Care</ion-badge>
+              <license-badge :type="job.licenseType"/>
             </ion-col>
             <ion-col size="2">
               <app-icon name="add-purple" size="medium"/>
@@ -351,6 +355,12 @@ export default defineComponent({
             line-height: 1.3em;
           }
         }
+      }
+    }
+
+    ion-badge {
+      + ion-badge {
+        margin-left: 8px;
       }
     }
   }
